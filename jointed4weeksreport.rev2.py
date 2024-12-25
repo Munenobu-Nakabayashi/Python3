@@ -4,11 +4,10 @@ import glob
 import zipfile
 import gc
 import os
-import os
 import shutil
 import datetime
 import logging	# we neeed this "logging" library. do not delete this "import" !
-from logging import getLogger, getLogger, StreamHandler, FileHandler, Formatter, DEBUG, INFO, ERROR, CRITICAL, FATAL
+from logging import getLogger, StreamHandler, FileHandler, Formatter, DEBUG, INFO, WARNING, ERROR, CRITICAL, FATAL
 import time
 # coding: UTF-8
 if len(sys.argv) > 1: 		# if there is not the 1st args, stop this program ! 
@@ -217,7 +216,7 @@ def classify_by_folders():
 		for line in lines:
 			folderpath, cnt = line.split('\t')
 			folderpath = folderpath.split('?')[0]	# remove query string (if exists)
-			folderpath = os.path.dirname(folderpath) +	'/'	# remove files string
+			folderpath = os.path.dirname(folderpath) +	'/'	# remove filenames string
 			if prev_folderpath != folderpath:
 				if prev_folderpath == '':
 					prev_folderpath = folderpath
